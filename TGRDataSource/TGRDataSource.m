@@ -28,6 +28,8 @@
 @property (copy, nonatomic) NSString *cellReuseIdentifier;
 @property (copy, nonatomic) TGRDataSourceCellBlock configureCellBlock;
 
+@property (copy, nonatomic) TGRDataSourceDequeueReusableCellBlock dequeueReusableCellBlock;
+
 @end
 
 @implementation TGRDataSource
@@ -39,6 +41,18 @@
     
     if (self) {
         self.cellReuseIdentifier = reuseIdentifier;
+        self.configureCellBlock = configureCellBlock;
+    }
+    
+    return self;
+}
+
+- (id)initWithDequeueReusableCellBlock:(TGRDataSourceDequeueReusableCellBlock)dequeueReusableCellBlock
+                    configureCellBlock:(TGRDataSourceCellBlock)configureCellBlock {
+    self = [super init];
+    
+    if (self) {
+        self.dequeueReusableCellBlock = dequeueReusableCellBlock;
         self.configureCellBlock = configureCellBlock;
     }
     
@@ -63,9 +77,14 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellReuseIdentifier
-                                                            forIndexPath:indexPath];
     id item = [self itemAtIndexPath:indexPath];
+
+    UITableViewCell *cell;
+    if (self.dequeueReusableCellBlock) {
+        cell = self.dequeueReusableCellBlock(item);
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:self.cellReuseIdentifier forIndexPath:indexPath];
+    }
     
     if (self.configureCellBlock) {
         self.configureCellBlock(cell, item);
@@ -86,9 +105,14 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.cellReuseIdentifier
-                                                                           forIndexPath:indexPath];
     id item = [self itemAtIndexPath:indexPath];
+
+    UICollectionViewCell *cell;
+    if (self.dequeueReusableCellBlock) {
+        cell = self.dequeueReusableCellBlock(item);
+    } else {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.cellReuseIdentifier forIndexPath:indexPath];
+    }
     
     if (self.configureCellBlock) {
         self.configureCellBlock(cell, item);

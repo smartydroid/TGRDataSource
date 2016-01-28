@@ -23,6 +23,7 @@
 #import <UIKit/UIKit.h>
 
 typedef void (^TGRDataSourceCellBlock)(id cell, id item);
+typedef id (^TGRDataSourceDequeueReusableCellBlock)(id item);
 
 /**
  Convenience class to encapsulate an `UITableView` or `UICollectionView` data source. 
@@ -40,6 +41,8 @@ typedef void (^TGRDataSourceCellBlock)(id cell, id item);
  */
 @property (copy, nonatomic, readonly) TGRDataSourceCellBlock configureCellBlock;
 
+@property (copy, nonatomic, readonly) TGRDataSourceDequeueReusableCellBlock dequeueReusableCellBlock;
+
 /**
  Initializes the data source.
  
@@ -50,6 +53,9 @@ typedef void (^TGRDataSourceCellBlock)(id cell, id item);
  */
 - (id)initWithCellReuseIdentifier:(NSString *)reuseIdentifier
                configureCellBlock:(TGRDataSourceCellBlock)configureCellBlock;
+
+- (id)initWithDequeueReusableCellBlock:(TGRDataSourceDequeueReusableCellBlock)dequeueReusableCellBlock
+                    configureCellBlock:(TGRDataSourceCellBlock)configureCellBlock;
 
 /**
  Returns a data source item in a particular location.
