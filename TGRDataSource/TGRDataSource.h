@@ -23,7 +23,7 @@
 #import <UIKit/UIKit.h>
 
 typedef void (^TGRDataSourceCellBlock)(id cell, id item);
-typedef id (^TGRDataSourceDequeueReusableCellBlock)(id item);
+typedef NSString* (^TGRDataSourceDequeueReusableCellBlock)(id item);
 
 /**
  Convenience class to encapsulate an `UITableView` or `UICollectionView` data source. 

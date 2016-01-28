@@ -79,12 +79,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     id item = [self itemAtIndexPath:indexPath];
 
-    UITableViewCell *cell;
+    NSString *cellIdentifier = self.cellReuseIdentifier;
     if (self.dequeueReusableCellBlock) {
-        cell = self.dequeueReusableCellBlock(item);
-    } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:self.cellReuseIdentifier forIndexPath:indexPath];
+        cellIdentifier = self.dequeueReusableCellBlock(item);
     }
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     if (self.configureCellBlock) {
         self.configureCellBlock(cell, item);
@@ -107,12 +107,12 @@
 {
     id item = [self itemAtIndexPath:indexPath];
 
-    UICollectionViewCell *cell;
+    NSString *cellIdentifier = self.cellReuseIdentifier;
     if (self.dequeueReusableCellBlock) {
-        cell = self.dequeueReusableCellBlock(item);
-    } else {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.cellReuseIdentifier forIndexPath:indexPath];
+        cellIdentifier = self.dequeueReusableCellBlock(item);
     }
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     if (self.configureCellBlock) {
         self.configureCellBlock(cell, item);
