@@ -37,6 +37,18 @@ cellReuseIdentifier:(NSString *)reuseIdentifier
     return self;
 }
 
+- (id)initWithItems:(NSArray *)items
+dequeueReusableCellBlock:(TGRDataSourceDequeueReusableCellBlock)dequeueReusableCellBlock
+ configureCellBlock:(TGRDataSourceCellBlock)configureCellBlock {
+    self = [super initWithDequeueReusableCellBlock:dequeueReusableCellBlock configureCellBlock:configureCellBlock];
+
+    if (self) {
+        _items = [items copy];
+    }
+    
+    return self;
+}
+
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath {
     return self.items[(NSUInteger)indexPath.row];
 }

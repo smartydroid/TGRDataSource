@@ -45,5 +45,8 @@
 cellReuseIdentifier:(NSString *)reuseIdentifier
  configureCellBlock:(TGRDataSourceCellBlock)configureCellBlock;
 
+- (id)initWithItems:(NSArray *)items
+dequeueReusableCellBlock:(TGRDataSourceDequeueReusableCellBlock)dequeueReusableCellBlock
+ configureCellBlock:(TGRDataSourceCellBlock)configureCellBlock;
 
 @end

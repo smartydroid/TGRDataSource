@@ -37,6 +37,18 @@
     return self;
 }
 
+- (id)initWithFetchedResultsController:(NSFetchedResultsController *)controller
+              dequeueReusableCellBlock:(TGRDataSourceDequeueReusableCellBlock)dequeueReusableCellBlock
+                    configureCellBlock:(TGRDataSourceCellBlock)configureCellBlock {
+    self = [super initWithDequeueReusableCellBlock:dequeueReusableCellBlock configureCellBlock:configureCellBlock];
+    
+    if (self) {
+        _fetchedResultsController = controller;
+    }
+    
+    return self;
+}
+
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath {
     return [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
