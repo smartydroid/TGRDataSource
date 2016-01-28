@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "https://twitter.com/yangyugang"
   
   s.platform     = :ios, "6.0"
-  s.source       = { :git => "https://github.com/smartydroid/TGRDataSource.git", :tag => "0.2" }
+  s.source       = { :git => "https://github.com/smartydroid/TGRDataSource.git", :tag => "0.3" }
   s.source_files  = "TGRDataSource"
   
   s.frameworks = "Foundation", "UIKit", "CoreData"
