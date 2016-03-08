@@ -81,7 +81,7 @@
 
     NSString *cellIdentifier = self.cellReuseIdentifier;
     if (self.dequeueReusableCellBlock) {
-        cellIdentifier = self.dequeueReusableCellBlock(item);
+        cellIdentifier = self.dequeueReusableCellBlock(item, indexPath);
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -109,7 +109,7 @@
 
     NSString *cellIdentifier = self.cellReuseIdentifier;
     if (self.dequeueReusableCellBlock) {
-        cellIdentifier = self.dequeueReusableCellBlock(item);
+        cellIdentifier = self.dequeueReusableCellBlock(item, indexPath);
     }
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
