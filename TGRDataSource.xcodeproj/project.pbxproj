@@ -211,7 +211,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TGR;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Guillermo Gonzalez";
 			};
 			buildConfigurationList = 990C565719017A3400E382F1 /* Build configuration list for PBXProject "TGRDataSource" */;
@@ -304,6 +304,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -394,6 +395,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "TGRDataSourceTests/TGRDataSourceTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gonzalezreal.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -410,6 +412,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TGRDataSource/TGRDataSource-Prefix.pch";
 				INFOPLIST_FILE = "TGRDataSourceTests/TGRDataSourceTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gonzalezreal.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
