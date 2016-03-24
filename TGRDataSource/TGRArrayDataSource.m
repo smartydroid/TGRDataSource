@@ -22,6 +22,10 @@
 
 #import "TGRArrayDataSource.h"
 
+@interface TGRArrayDataSource()
+@property (copy, nonatomic) NSArray *items;
+@end
+
 @implementation TGRArrayDataSource
 
 - (id)initWithItems:(NSArray *)items
@@ -76,6 +80,11 @@ dequeueReusableCellBlock:(TGRDataSourceDequeueReusableCellBlock)dequeueReusableC
      numberOfItemsInSection:(NSInteger)section
 {
     return [self.items count];
+}
+
+- (instancetype)updateData:(NSArray *)data {
+    self.items = [data copy];
+    return self;
 }
 
 @end
